@@ -1,9 +1,11 @@
 const express = 'express';
+const helmet = require('helmet');
+
+const dataBase = require('./userDb');
 
 const router = express.Router();
 
 router.post('/', (req, res) => {
-
 });
 
 router.post('/:id/posts', (req, res) => {
@@ -11,7 +13,10 @@ router.post('/:id/posts', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-
+    dataBase.find()
+    .then(user =>{
+        res.status(200).json(user);
+    })
 });
 
 router.get('/:id', (req, res) => {
